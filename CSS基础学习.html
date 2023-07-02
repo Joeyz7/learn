@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+        /* 进阶选择器 */
+        /* 父代选择器 可选择子代、孙代、重孙代等等*/
+        .father p {
+            color: red;
+        } 
+        /* 子代选择器 只可选择子代*/
+        .father > p {
+            color: red;
+        }
+        /* 并集选择器 逗号分割*/
+        .father p ，div ，span {
+            color: red;
+        }
+        /* 交集选择器 紧挨着 没有分割，交集选择器中如果有标签选择器标签选择器必须写在最前面*/
+        p.father {
+            color: red;
+        }
+        /* hover伪类选择器语法 选中鼠标悬停在元素上的状态，设置样式 ，注意伪类选择器选中的元素的某种状态*/
+        a:hover{
+        color: rgb(255, 255, 0);
+        text-decoration: underline;
+        }
+
+
+
+
+
+
+        p {
+            
+            /* 文字颜色 以单个大括号内的最后一个覆盖（若存在多个重复color） */
+            /* 关键词颜色 */
+            color: red;
+
+            /* rgb表示法 */
+            color: rgb(255, 200, 200);
+
+            /* rgb额外加了 a透明度颜色   a的值:0-完全透明,1-完全不透明, 额外支持小数点, .5半透明 等等(省略0) */
+            color: rgba(255, 255, 0,.5);
+                       /*测量工具:貌似叫 pxcoke    a=10,b=11,...f=15  */
+            /* 16进制表示法 取值: #开头 数字为两两一组 0~9,a,b,c,d,e,f */
+            color: #ffff00;
+            /* 省略写法 */
+            color: #ff0;
+            /* 背景颜色 rgba：0000或transparent 是透明，*/
+            background-color: aquamarine;
+
+            /* 背景图片 */
+            background-image: url('');
+            /*背景平铺  */
+            background-repeat: no-repeat;
+            /* 背景位置 水平 + 垂直*/
+            background-position: 200px 200px;
+
+            /* 背景连写 */
+            background: skyblue url('') no-repeat center center;
+
+
+            /* 高度或宽度若不设置则会占满父元素对应的值 */
+            /* 宽度 */
+            width: 300px;
+            /* 高度 */
+            height: 300px;
+
+
+
+            /* 字体样式 */
+            /* 字体大小 谷歌浏览器默认是16px  px单位需要设置，否则无效*/
+            font-size: 30px;
+            /* 字体粗细 
+                关键字：（常用）
+                    正常：normal
+                    加粗：bold
+                纯数字： 100~900的整百数
+                    正常：400
+                    加粗：700    
+              注意：
+                1.不是所有字体都提供了九种粗细，因此不分取值页面中无变化
+                2.实际开发中以：关键字 正常、加粗两种取值使用最多
+            */
+            font-weight: bold;
+            /* 字体样式 
+                取值：
+                    正常(默认值)：normal
+                    倾斜：italic
+            */
+            font-style: italic;
+            /* 字体类型 
+                常用字体：
+                    sans-serif：无衬线字体
+                        特点：文字笔画粗细均匀，并且首尾无装饰
+                        场景：网页中大多采用无衬线字体
+                        常见系列字体：黑体、Arial
+                    serif：衬线字体
+                        特点：文字笔画粗细不均，并且首尾有笔锋装饰
+                        场景：报刊书籍中广泛使用
+                        常见系列字体：宋体、Times New Roman
+                    monospace：等宽字体
+                        特点：每个字母或文字的宽度相等
+                        场景：用于程序代码编写，有利于阅读和编写
+                        常见系列字体：Consolas、fira code
+
+                可具体取字体，多个用，隔开（按顺序查找可用字体）建议尽量用系统自带字体
+            */
+            font-family: 隶书,楷体,宋体;
+
+
+            /* 字体相关样式连写 
+                简写：swsf(稍微舒服) 顺序：style weight size/line-height family
+                格式：
+                font：italic 700 30px/400px 楷体,宋体,隶书,sans-serif;
+                省略要求：只能省略前两个，后两个是不能省略
+                注意点：
+                    如果需要同时设置单独和连写形式
+                    1.要么把单独的形式写在连写的下面
+                    2.要么不要单独写 且直接写在连写的里面
+            */
+            font: italic 700 30px/400px 楷体,宋体,隶书,sans-serif;
+            
+            
+            /*
+            设置字体缩进  单位： px  、 em（常用：因为px需要实时根据字体大小进行设置比较麻烦，而em = 当前标签的font-size的大小）
+            */
+            text-indent: 2em;
+
+            /* 
+            子元素文本水平对齐方式 取值：left 左对齐、center 居中对齐 、right 右对齐....
+
+            若需要让子元素实现对其，则需要在父元素上设置该参数
+            */
+            text-align: center;
+
+
+
+            /* 设置元素本身水平居中（包含父元素） */
+            margin: 0 auto;
+
+            /*  
+            文本修饰 取值 underline 下划线、none 无装饰线（常用于 清除a标签默认的下划线）
+            */
+            text-decoration: none;
+
+
+            /* 行高  单位 px  或纯数字（字大小的倍数）
+            若需要设置为盒子居中，则直接设置父盒子高度即可（仅只是针对于单行文本）
+            在网页精准布局的时候，会设置行高为1取消上下间距
+
+            假如在字体相关样式连写前面设置该参数则会被连写覆盖（可在连写里加上，或写在连写后面）
+            */
+            line-height: 30px;
+
+
+
+
+
+
+
+
+
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="./xx.css">
+</head>
+<body>
+    <!-- css 需要写在style标签内
+         格式：
+            选择器 {
+                属性名：属性值；
+          }
+        有三种引入方式：
+        1.内嵌式：CSS写在style标签中
+          格式：如头里写的css一致
+        2.外联式：写在一个单独的.css文件中（项目常用）
+          格式：<link rel="stylesheet" href="./xx.css">
+        3.行内式：写在标签的style属性中
+          格式：<p style="color: blue;">css 基础 </p>
+        -->
+    <p style="color: blue;">css 基础 </p>
+
+
+
+
+    <!-- 基础选择器
+        开发实际情况：
+            类选择器用的最多
+            id一般配合js使用，除非特殊情况，否则不要用id设置样式
+            实际开发中会遇到冗余代码的抽取（可以将一些公共的代码抽取到一个公共的类中去）
+    -->
+    <!-- 标签选择器 
+        格式： 标签名称 { 属性名：属性值；}
+    -->
+    <p>p为标签名称</p>
+    <!-- 类选择器 （最常用）
+        格式： .class属性值 { 属性名：属性值；}
+    -->
+    <p class="one two three">one two three 为类名（不同标签可重复 多个类名以空格隔开）</p>
+    <!-- id选择器 （一般不用）
+        格式：  #id属性值 { 属性名：属性值；}
+    -->
+    <p id="">id为页面唯一</p>
+    <!-- 通配符选择器 （极少数用）
+        格式：  * { 属性名：属性值；}
+
+        会用于去除标签默认的margin和padding 如：
+
+             * { 
+                 margin：0；
+                 padding：0；
+                }
+    -->
+    <!-- 
+    以下称之为大盒子
+    <div></div>
+    <p ></p>
+    <h></h>
+    -->
+    <!-- 字体样式 -->
+    <!-- 字体大小 -->
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
